@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+img{
+    max-width:400px ;
+}
+.parallax-wrapper{
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 300px;
+}
+.parallax-group{
+    position: relative;
+    transform-style: preserve-3d;
+}
+.fast-layer{
+    transform: translateZ(190px) scale(.5);
+}
+.top-layer{
+    transform: translateZ(210px) scale(0.3);
+}
+.topper-layer{
+    transform: translateZ(260px) scale(0.08);
+}
+.intro-screen{
+    height: 109vh;
+    width: 100vw;
+    background-color: #f6f5f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+.fastest-cat{
+    width: 300px;
+}
+.image-layer{
+    position: absolute;
+    width: 80%;
+    top: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: -1;
+}
+.text-layer {
+    position: absolute;
+    display: flex;
+    top: 30%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 7rem;
+}
+.intro-brain{
+    width: 27%;
+}
+.animation1{
+    height: 100vh;
+    background-color: #f6f5f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 2;
+}
+.def{
+    height: 30vh;
+    width: 100vw;
+    background-color: #f6f5f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+.play{
+    height: 70vh;
+    width: 100vw;
+    background-color: #f6f5f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    color: #333;
+    background-color: #f6f5f4;
+    font-size: 4rem;
+    line-height: 1.5;
+    text-align: center;
+    padding-bottom: 100px;
+}
+.text{
+    position: relative;
+    top: 15%;
+    color: #333;
+    width: 70%;
+    font-size: 2.5rem;
+    padding: 0 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    background-color: #333;
+    padding: 20px;
+    text-align: center;
+    border-radius: 40px;
+    color: #f6f5f4;
+    font-size: 2rem;
+}
