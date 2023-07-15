@@ -3,6 +3,7 @@ const config = {
     type: Phaser.AUTO,
     width: '100%',
     height: '100%',
+    backgroundColor : '#F8F0E3',
 //setting physic engine to 'arcade', a built in Phaser engine
     physics: {
       default: 'arcade',
@@ -19,34 +20,51 @@ const config = {
     }
   };
 
+
+
 //new Phase Game
 const game = new Phaser.Game(config);
+
+
 
 //scene 1/3 : loading the game assets
   function preload() {
     this.load.image('player','/assets/images/player_level1.png');
     this.load.image('wall','/assets/images/wall_level1.png');
     this.load.image('goal','/assets/images/goal_level1.png');
+    this.load.image('hole','/assets/images/hole_level1.png');
+    this.load.audio('scream', '/assets/audio/scream.mp3');
+    this.load.audio('music_level1', '/assets/audio/music_level1.mp3');
   }
   
+
+
 //initating variables
 let player;
 let walls;
 let goal;
+let holes;
 let timer;
 let timerText;
-  
+
+
+
 //scene 2/3 : setting up game objects and initial state after preload
 function create() {
+  //play background music
+  const music = this.sound.add('music_level1', {loop: false });
+  music.play();
   //assiging 'player' loaded sprite to player variable ana setting position 
   player = this.physics.add.sprite(40, 40, 'player');
   //limiting the player to the window boarders
   player.setCollideWorldBounds(true);
   //creating walls static group
   walls = this.physics.add.staticGroup();
+  //creating holes static group
+  holes = this.physics.add.staticGroup();
   //setting up timer method
   timer = this.time.addEvent({
-    delay: 30000,
+    delay: 60000,
     callback: endGameTime,
     callbackScope: this
   });
@@ -54,7 +72,9 @@ function create() {
   timerText = this.add.text(this.cameras.main.width / 2, 10, 'Time: 30', {
     fontFamily: 'Arial',
     fontSize: 24,
-    color: '#ffffff'
+    color: '#000000',
+    backgroundColor: '#F5F5DC',
+    fontWeight: 'bold'
   }).setOrigin(0.5, 0);
   //putting timer on top
   timerText.setDepth(1);
@@ -64,6 +84,8 @@ function create() {
   goal = this.physics.add.sprite(700, 580, 'goal');
   //limiting 'player' from running into 'walls'
   this.physics.add.collider(player, walls);
+  //calling losing function when 'player' overlap 'hole', and finishing the level with game.destroy
+  this.physics.add.overlap(player, holes, endGameTrap, null, this);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function() {
     alert('Congratulations!.');
@@ -94,20 +116,25 @@ function update() {
   const remainingTime = Math.round((timer.delay - timer.getElapsed()) / 1000);
   timerText.setText('Time: ' + remainingTime);
 }
-//timer end function
+//timer end game function
 function endGameTime() {
   alert('Time is up! Game Over.');
-  //ending game function
   game.destroy();
 }
 
+//trap end game function with sound effect
+function endGameTrap() {
+  const scream = this.sound.add('scream', {loop:false});
+  scream.play();
+  alert('laaaaaaaaa2');
+  game.destroy();
+}
 
 //setting createMaze function
 function createMaze() {
 //setting wallsData array, with walls coordinates on X and Y axis
   var wallsData = [
     // top
-    // { x: 100, y: 40 },
     { x: 160, y: 40 },
     { x: 220, y: 40 },
     { x: 280, y: 40 },
@@ -177,23 +204,19 @@ function createMaze() {
     { x: 220, y: 280 },
     { x: 220, y: 220 },
     { x: 220, y: 160 },
-    { x: 160, y: 160 },
     { x: 400, y: 400 },
     { x: 340, y: 400 },
     { x: 280, y: 400 },
     { x: 280, y: 460 },
-    { x: 400, y: 520 },
     { x: 460, y: 400 },
     { x: 520, y: 280 },
     { x: 580, y: 280 },
     { x: 580, y: 100 },
-    { x: 580, y: 160 },
     { x: 640, y: 280 },
     { x: 700, y: 280 },
     { x: 520, y: 400 },
     { x: 520, y: 340 },
     { x: 100, y: 460 },
-    { x: 160, y: 460 },
     { x: 640, y: 520 },
     { x: 640, y: 460 },
     { x: 700, y: 460 },
@@ -205,33 +228,41 @@ function createMaze() {
     { x: 700, y: 220 },
     { x: 700, y: 160 },
     { x: 760, y: 160 },
-    { x: 820, y: 160 },
-    { x: 820, y: 160 },
     { x: 880, y: 160 },
     { x: 940, y: 160 },
     { x: 1000, y: 160 },
     { x: 1060, y: 160 },
-    { x: 1120, y: 160 },
     { x: 1180, y: 280 },
     { x: 1120, y: 280 },
     { x: 1060, y: 280 },
     { x: 940, y: 280 },
     { x: 880, y: 280 },
     { x: 820, y: 280 },
-    { x: 820, y: 460 },
     { x: 880, y: 400 },
     { x: 940, y: 400 },
     { x: 1000, y: 400 },
     { x: 1060, y: 400 },
     { x: 1120, y: 400 },
-    { x: 1120, y: 460 },
-    { x: 1000, y: 520 },
     { x: 760, y: 460 },
-    
-    
   ];
 // loop that iterates over each object in the wallsData array. For each object, the walls.create method is called to create a wall sprite at the specified x and y coordinates using the 'wall' image.
   wallsData.forEach(function(wall) {
     walls.create(wall.x, wall.y, 'wall');
+  });
+//setting holesData array, with holes coordinates on X and Y axis
+  var holesData = [
+  { x: 400, y: 520 },
+  { x: 1000, y: 520 }, 
+  { x: 160, y: 160 },
+  { x: 160, y: 460 }, 
+  { x: 820, y: 160 },
+  { x: 580, y: 160 },
+  { x: 1120, y: 160 },
+  { x: 1120, y: 460 },
+  { x: 820, y: 460 },
+  ];
+// loop that iterates over each object in the holesData array. For each object, the holes.create method is called to create a hole sprite at the specified x and y coordinates using the 'hole' image.
+  holesData.forEach(function(hole) {
+  holes.create(hole.x, hole.y, 'hole');
   });
 }
