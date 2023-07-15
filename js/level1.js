@@ -33,6 +33,8 @@ const game = new Phaser.Game(config);
 let player;
 let walls;
 let goal;
+let timer;
+let timerText;
   
 //scene 2/3 : setting up game objects and initial state after preload
 function create() {
@@ -42,6 +44,20 @@ function create() {
   player.setCollideWorldBounds(true);
   //creating walls static group
   walls = this.physics.add.staticGroup();
+  //setting up timer method
+  timer = this.time.addEvent({
+    delay: 30000,
+    callback: endGameTime,
+    callbackScope: this
+  });
+  //adding timer text
+  timerText = this.add.text(this.cameras.main.width / 2, 10, 'Time: 30', {
+    fontFamily: 'Arial',
+    fontSize: 24,
+    color: '#ffffff'
+  }).setOrigin(0.5, 0);
+  //putting timer on top
+  timerText.setDepth(1);
   //calling createMaze function written below
   createMaze();
   //assiging 'goal' loaded sprite to goal variable and setting position 
@@ -50,7 +66,7 @@ function create() {
   this.physics.add.collider(player, walls);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function() {
-    alert('Congratulations! Kitty is Happy Now.');
+    alert('Congratulations!.');
     game.destroy();
     }, null, this);
   //keyboard controls built-in Phaser
@@ -74,7 +90,17 @@ function update() {
   } else {
     player.setVelocityX(0);
   }
+  //remaining time calculation with rounding to show only seconds
+  const remainingTime = Math.round((timer.delay - timer.getElapsed()) / 1000);
+  timerText.setText('Time: ' + remainingTime);
 }
+//timer end function
+function endGameTime() {
+  alert('Time is up! Game Over.');
+  //ending game function
+  game.destroy();
+}
+
 
 //setting createMaze function
 function createMaze() {
