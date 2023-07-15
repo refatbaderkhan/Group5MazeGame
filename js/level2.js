@@ -27,13 +27,13 @@ let walls;
 let goal;
 
 function create() {
-    player = this.physics.add.sprite(20, 110, 'player');
+    player = this.physics.add.sprite(20, 50, 'player');
     player.setCollideWorldBounds(true);
 
     walls = this.physics.add.staticGroup();
     createMaze();
 
-    goal = this.physics.add.sprite(1270, 350, 'goal');
+    goal = this.physics.add.sprite(1270, 600, 'goal');
 
     this.physics.add.collider(player, walls);
 
@@ -60,4 +60,37 @@ function update() {
     } else {
         player.setVelocityX(0);
     }
+}
+
+function createMaze() {
+
+    // var increment = 30;
+    var wallsData = [];
+    function build_vertically(x, y, blocks_num) {
+        for (var i = 0; i < blocks_num; i++) {
+            wallsData.push({ x: x, y: y + 30 * i });
+        }
+    }
+
+    function build_horizontally( x, y, blocks_num) {
+        for (var i = 0; i < blocks_num; i++) {
+            wallsData.push({ x: x + 30 * i, y: y });
+        }
+    }
+
+    // top
+    build_horizontally(20, 20, 42)
+
+    // left
+    build_vertically(20, 80, 18)
+
+    // bottom
+    build_horizontally(60, 610, 40)
+    
+    // right
+    build_vertically(1270, 50, 18)
+
+    wallsData.forEach(function (wall) {
+        walls.create(wall.x, wall.y, 'wall');
+    });
 }
