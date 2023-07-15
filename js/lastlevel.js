@@ -176,7 +176,7 @@ document.addEventListener("keydown", move);
 let catImage;
 window.addEventListener('load', () => {
   catImage = new Image();
-  catImage.src = 'cat.png';
+  catImage.src = '../assets/images/player_level1.png';
   catImage.onload = generateMaze;
 });
 
