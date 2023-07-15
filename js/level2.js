@@ -116,7 +116,7 @@ function createMaze() {
     build_vertically(650, 80, 16)
     build_vertically(590, 140, 16)
     build_vertically(830, 80, 18)
-    build_horizontally(830, 80, 15)
+    build_horizontally(830, 80, 13)
     build_horizontally(920, 170, 14)
     build_horizontally(830, 260, 14)
     build_horizontally(920, 350, 14)
