@@ -50,7 +50,7 @@ p {
 }
 
 button {
-    background-color: #484ba9;
+    background-color: #7aaf48;
     padding: 10px 20px 10px 20px;
     border: none;
     font-size: 16px;
@@ -68,10 +68,6 @@ button {
     min-width: 200px;
     padding: .5rem;
     width: auto;
-}
-
-.level1-to-2 {
-    background-color: #7aaf48;
 }
 
 .hide {
