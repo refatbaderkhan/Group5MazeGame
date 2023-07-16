@@ -39,15 +39,12 @@ const game = new Phaser.Game(config);
   
 // function to slide modal to screen
 function unhideModal(hide, failure, score) {
-  // getting elements
   var message = document.getElementById('message')
-  var score_span = document.getElementById('score')
+  var score_span = document.getElementById('score-span')
   var next_link = document.getElementById('next-level')
   var overlay = document.getElementById('overlay');
-
-  // slide modal, display msg and score
   overlay.classList.add('overlay-slide-right');
-  score_span.innerText = `Score ${score}`
+  score_span.innerText = `score ${score}`
   if(hide == true){
     next_link.classList.add('hide')
     if(failure == 1){
@@ -57,10 +54,10 @@ function unhideModal(hide, failure, score) {
       message.innerText = 'Time is up! Game Over'
     }
   }
+  localStorage.setItem('score', score)
   var modal_btn = document.getElementsByClassName('level2-to-3');
   modal_btn.addEventListener( function(){
   overlay.classList.remove('overlay-slide-right')
-  localStorage.setItem('score', score)
   });
 }
 
