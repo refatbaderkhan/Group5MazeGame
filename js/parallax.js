@@ -1,7 +1,7 @@
 let logo = document.getElementById('logo');
 let text = document.getElementById('text');
-let gateleft = document.getElementById('gate-left');
-let gateright = document.getElementById('gate-right');
+let gateleft = document.getElementById('cactus-left');
+let gateright = document.getElementById('cactus-right');
 
 window.addEventListener('scroll', () => {
     let value = window.scrollY;
