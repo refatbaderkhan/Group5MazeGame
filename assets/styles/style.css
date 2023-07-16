@@ -67,3 +67,8 @@ header {
     background: #003329;
     padding: 100px;
 }
+
+.sec p {
+    font-size: 1em;
+    color: #fff;
+}
