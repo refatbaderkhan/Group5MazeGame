@@ -282,8 +282,5 @@ function createMaze() {
     traps.create(trap.x, trap.y, 'trap').setDepth(1);
     });
 
-
-    
-
     
 }
