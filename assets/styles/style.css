@@ -36,6 +36,7 @@ header {
 #text{
     font-size: 3em;
     color: #020912;
+    z-index: 102;
 }
 
 .navigation a {
@@ -116,7 +117,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    pointer-events: none;
+    transform: scale(0.1); 
 }
 
 #gate-right{
@@ -125,6 +126,7 @@ header {
     left: 0;
     width: 100%;
     pointer-events: none;
+    transform: scale(0.1); 
 }
 
 #grass{
@@ -145,7 +147,16 @@ header {
     background-color: #020912;
     color: aliceblue;
     opacity: 0.5;
-    background-image: url(assets/homeimages/maze1.jpg);
+    background-image: url(/assets/images/maze.png);
     background-size: cover;
     margin-top: 0;
+    background-color: Rgb(248, 240, 227);
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.empty-section {
+    height: 100vh;
+    width: 100vw;
 }
