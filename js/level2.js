@@ -154,7 +154,7 @@ function update() {
 
 //timer end game function
 function endGameTime() {
-  var score = parseInt(localStorage.getItem('score'))
+    var score = parseInt(localStorage.getItem('score'))
     unhideModal(true, -1, score)
     game.destroy();
 }
@@ -163,15 +163,16 @@ function endGameTime() {
 function endGameTrap() {
     const scream = this.sound.add('scream', { loop: false });
     scream.play();
-  var score = parseInt(localStorage.getItem('score'))
+    var score = parseInt(localStorage.getItem('score'))
     unhideModal(true, 1, score)
     resetGame();
 }
 
 //esc quit game function
 function endGameQuit() {
-    window.location = "index.html"
+    localStorage.setItem('local', 0)
     game.destroy();
+    window.location = "index.html"
 }
 
 function createMaze() {
