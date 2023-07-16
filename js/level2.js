@@ -169,7 +169,7 @@ function endGameTrap() {
 
 //esc quit game function
 function endGameQuit() {
-    alert('See you later!.');
+    window.location = "index.html"
     game.destroy();
 }
 
