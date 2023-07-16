@@ -31,9 +31,12 @@ function preload() {
 }
 
 // function to slide modal to screen
-function unhideModal() {
+function unhideModal(score) {
+    var score_span = document.getElementById('score-span')
     var overlay = document.getElementById('overlay');
     overlay.classList.add('overlay-slide-right');
+    total_score = parseInt(localStorage.getItem('score')) + score;
+    score_span.innerText = `score ${total_score}`
     var modal_btn = document.getElementsByClassName('level1-to-2');
     modal_btn.addEventListener( function(){
     overlay.classList.remove('overlay-slide-right')
@@ -95,7 +98,7 @@ function create() {
     this.physics.add.overlap(player, traps, endGameTrap, null, this);
 
     this.physics.add.overlap(player, goal, function () {
-        unhideModal();
+        unhideModal(200);
         game.destroy();
     }, null, this);
 
