@@ -1,5 +1,5 @@
 // let complete = document.querySelector(".complete");
-let maze = document.querySelector(".maze");
+let maze = document.querySelector(".maze3");
 let ctx = maze.getContext("2d");
 let generationComplete = false;
 let current;
@@ -27,7 +27,7 @@ class Maze {
   draw() {
     maze.width = this.size;
     maze.height = this.size;
-    maze.style.background = "black";
+    maze.style.background = "rgb(248, 240, 227)";
     current.visited = true;
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.columns; c++) {
@@ -154,8 +154,8 @@ class Cell {
   show(size, rows, columns) {
     let x = (this.colNum * size) / columns;
     let y = (this.rowNum * size) / rows;
-    ctx.strokeStyle = "#0000CD";
-    ctx.fillStyle = "black";
+    ctx.strokeStyle = "rgba(255, 99, 71, 0.5)";
+    ctx.fillStyle = "rgb(248, 240, 227)";
     ctx.lineWidth = 2;
     if (this.walls.topWall) this.drawTopWall(x, y, size, columns, rows);
     if (this.walls.rightWall) this.drawRightWall(x, y, size, columns, rows);
