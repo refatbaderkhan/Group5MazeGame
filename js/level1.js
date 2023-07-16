@@ -32,7 +32,7 @@ const game = new Phaser.Game(config);
     this.load.image('player','/assets/images/player_level1.png');
     this.load.image('wall','/assets/images/wall_level1.png');
     this.load.image('goal','/assets/images/goal_level1.png');
-    this.load.image('hole','/assets/images/hole_level1.png');
+    this.load.image('trap','/assets/images/hole_level1.png');
     this.load.audio('scream', '/assets/audio/scream.mp3');
     this.load.audio('music_level1', '/assets/audio/music_level1.mp3');
   }
@@ -43,7 +43,7 @@ const game = new Phaser.Game(config);
 let player;
 let walls;
 let goal;
-let holes;
+let traps;
 let timer;
 let timerText;
 
@@ -60,8 +60,8 @@ function create() {
   player.setCollideWorldBounds(true);
   //creating walls static group
   walls = this.physics.add.staticGroup();
-  //creating holes static group
-  holes = this.physics.add.staticGroup();
+  //creating traps static group
+  traps = this.physics.add.staticGroup();
   //setting up timer method
   timer = this.time.addEvent({
     delay: 60000,
@@ -84,15 +84,17 @@ function create() {
   goal = this.physics.add.sprite(700, 580, 'goal');
   //limiting 'player' from running into 'walls'
   this.physics.add.collider(player, walls);
-  //calling losing function when 'player' overlap 'hole', and finishing the level with game.destroy
-  this.physics.add.overlap(player, holes, endGameTrap, null, this);
+  //calling losing function when 'player' overlap 'trap', and finishing the level with game.destroy
+  this.physics.add.overlap(player, traps, endGameTrap, null, this);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function() {
     alert('Congratulations!.');
     game.destroy();
     }, null, this);
-  //keyboard controls built-in Phaser
+  //assigining keyboard controls built-in Phaser
   cursors = this.input.keyboard.createCursorKeys();
+  //assigining ESC button to quit 
+  quit = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 }
 
 //scene 3/3: automatically called with every frame update, updating the game logic
@@ -112,10 +114,18 @@ function update() {
   } else {
     player.setVelocityX(0);
   }
+
+  //calling endGameQuit function when escape button is pressed
+  if (Phaser.Input.Keyboard.JustDown(quit)) {
+    endGameQuit();
+  }
+
   //remaining time calculation with rounding to show only seconds
   const remainingTime = Math.round((timer.delay - timer.getElapsed()) / 1000);
   timerText.setText('Time: ' + remainingTime);
 }
+
+
 //timer end game function
 function endGameTime() {
   alert('Time is up! Game Over.');
@@ -127,6 +137,12 @@ function endGameTrap() {
   const scream = this.sound.add('scream', {loop:false});
   scream.play();
   alert('laaaaaaaaa2');
+  resetGame();
+}
+
+//esc quit game function
+function endGameQuit() {
+  alert('See you later!.');
   game.destroy();
 }
 
@@ -249,8 +265,8 @@ function createMaze() {
   wallsData.forEach(function(wall) {
     walls.create(wall.x, wall.y, 'wall');
   });
-//setting holesData array, with holes coordinates on X and Y axis
-  var holesData = [
+//setting trapsData array, with traps coordinates on X and Y axis
+  var trapsData = [
   { x: 400, y: 520 },
   { x: 1000, y: 520 }, 
   { x: 160, y: 160 },
@@ -261,8 +277,8 @@ function createMaze() {
   { x: 1120, y: 460 },
   { x: 820, y: 460 },
   ];
-// loop that iterates over each object in the holesData array. For each object, the holes.create method is called to create a hole sprite at the specified x and y coordinates using the 'hole' image.
-  holesData.forEach(function(hole) {
-  holes.create(hole.x, hole.y, 'hole');
+// loop that iterates over each object in the trapsData array. For each object, the traps.create method is called to create a trap sprite at the specified x and y coordinates using the 'trap' image.
+  trapsData.forEach(function(trap) {
+  traps.create(trap.x, trap.y, 'trap');
   });
 }
