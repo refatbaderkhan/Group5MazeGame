@@ -170,9 +170,9 @@ function endGameTrap() {
 
 //esc quit game function
 function endGameQuit() {
-    localStorage.setItem('local', 0)
-    game.destroy();
+    localStorage.setItem('score', 0)
     window.location = "index.html"
+    game.destroy();
 }
 
 function createMaze() {

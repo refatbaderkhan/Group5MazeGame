@@ -192,7 +192,7 @@ function endGameTrap() {
 
 //esc quit game function
 function endGameQuit() {
-  localStorage.setItem('local', 0)
+  localStorage.setItem('score', 0);
   game.destroy();
   window.location = "index.html"
 }
