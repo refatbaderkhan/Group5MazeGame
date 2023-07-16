@@ -26,3 +26,11 @@ header {
     color: #359381;
     pointer-events: none;
 }
+
+.navigation a {
+    text-decoration: none;
+    color: #359381;
+    padding: 6px 15px;
+    border-radius: px;
+    margin: 0 10px;
+}
