@@ -63,10 +63,16 @@ function unhideModal(hide, failure, score) {
 
   // set new score in local storage
   localStorage.setItem('score', score)
-  var modal_btn = document.getElementsByClassName('level2-to-3');
+  var restart_btn = document.getElementById('restart_btn');
+  var next_btn = document.getElementById('next_btn');
 
-    // reset and next level button listeners
-  modal_btn.addEventListener(function () {
+  // reset and next level button listeners
+  restart_btn.addEventListener('click', function () {
+    overlay.classList.remove('overlay-slide-right')
+    location.reload();
+    return false;
+  });
+  next_btn.addEventListener('click', function () {
     overlay.classList.remove('overlay-slide-right')
   });
 }
@@ -128,7 +134,9 @@ function create() {
   this.physics.add.overlap(player, traps, endGameTrap, null, this);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function () {
-    unhideModal(false, -1, 100);
+    local_score = 100 + parseInt(localStorage.getItem('score'))
+    localStorage.setItem('score', local_score)
+    unhideModal(false, -1, local_score);
     game.destroy();
   }, null, this);
   //assigining keyboard controls built-in Phaser
@@ -168,7 +176,8 @@ function update() {
 
 //timer end game function
 function endGameTime() {
-  unhideModal(true, -1, 0)
+  var score = parseInt(localStorage.getItem('score'))
+  unhideModal(true, -1, score)
   game.destroy();
 }
 
@@ -176,7 +185,8 @@ function endGameTime() {
 function endGameTrap() {
   const scream = this.sound.add('scream', { loop: false });
   scream.play();
-  unhideModal(true, 1, 0)
+  var score = parseInt(localStorage.getItem('score'))
+  unhideModal(true, 1, score)
   resetGame();
 }
 
