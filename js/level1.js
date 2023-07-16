@@ -46,6 +46,8 @@ let goal;
 let traps;
 let timer;
 let timerText;
+let gameText;
+
 
 
 
@@ -80,6 +82,14 @@ function create() {
   timerText.setDepth(1);
   //calling createMaze function written below
   createMaze();
+  //adding gametext instructions 
+  gameText = this.add.text(this.cameras.main.width / 2, 625, 'Guide your kitty to get some food ** Hurry up and be on time! otherwise your cat will starve :( ** Watch out for the cactus! kitty hates them ** Press ESC anytime to quit the game', {
+    fontFamily: 'Arial',
+    fontSize: 16,
+    color: '#000000',
+    backgroundColor: '#F5F5DC',
+    fontWeight: 'bold'
+  }).setOrigin(0.5, 0);
   //assiging 'goal' loaded sprite to goal variable and setting position 
   goal = this.physics.add.sprite(700, 580, 'goal');
   //limiting 'player' from running into 'walls'
