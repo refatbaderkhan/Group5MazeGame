@@ -22,6 +22,15 @@ function preload() {
     this.load.image('goal', '../assets/images/player_level2.png');
 }
 
+function unhideModal() {
+    var overlay = document.getElementById('overlay');
+    overlay.classList.add('overlay-slide-right');
+    var modal_btn = document.getElementById('level2-to-3');
+    modal_btn.addEventListener( function(){
+    overlay.classList.remove('overlay-slide-right')
+    });
+}
+
 let player;
 let walls;
 let goal;
@@ -38,7 +47,7 @@ function create() {
     this.physics.add.collider(player, walls);
 
     this.physics.add.overlap(player, goal, function () {
-        // unhideModal();
+        unhideModal();
         game.destroy();
     }, null, this);
 
