@@ -41,7 +41,7 @@ const game = new Phaser.Game(config);
 function unhideModal() {
   var overlay = document.getElementById('overlay');
   overlay.classList.add('overlay-slide-right');
-  var modal_btn = document.getElementById('level2-to-3');
+  var modal_btn = document.getElementsByClassName('level2-to-3');
   modal_btn.addEventListener( function(){
   overlay.classList.remove('overlay-slide-right')
   });

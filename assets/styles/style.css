@@ -62,6 +62,10 @@ button {
     width: auto;
 }
 
+.level1-to-2 {
+    background-color: #7aaf48;
+}
+
 button:focus,
 button:hover {
     background: #BCBCBC;
