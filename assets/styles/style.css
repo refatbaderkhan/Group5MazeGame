@@ -66,6 +66,10 @@ button {
     background-color: #7aaf48;
 }
 
+.hide {
+    display: none;
+}
+
 button:focus,
 button:hover {
     background: #BCBCBC;
