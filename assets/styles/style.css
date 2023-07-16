@@ -13,6 +13,7 @@ body {
     width: 80vw;
 }
 
+/* modal styling */
 .overlay {
     display: flex;
     justify-content: center;
@@ -23,11 +24,10 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: var(--glass-effect);
+    background-color: rgba(160, 142, 142, 0.3);
     backdrop-filter: blur(10px);
     transform: translateX(-100vw);
 }
-
 
 .overlay-slide-right {
     transition: all 0.4s ease-in-out;
@@ -78,6 +78,7 @@ button:focus,
 button:hover {
     background: #BCBCBC;
 }
+
 .body-level3{
     background-color: rgb(248, 240, 227);
 }

@@ -174,14 +174,16 @@ function endGameQuit() {
 }
 
 function createMaze() {
-    // var increment = 30;
     var wallsData = [];
+
+    // function that adds blocks together vertically by fixing x-value and changing y value
     function build_vertically(x, y, blocks_num) {
         for (var i = 0; i < blocks_num; i++) {
             wallsData.push({ x: x, y: y + 30 * i });
         }
     }
 
+    // function that adds blocks together vertically by fixing y-value and changing x value
     function build_horizontally(x, y, blocks_num) {
         for (var i = 0; i < blocks_num; i++) {
             wallsData.push({ x: x + 30 * i, y: y });
