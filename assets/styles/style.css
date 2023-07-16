@@ -34,3 +34,9 @@ header {
     border-radius: px;
     margin: 0 10px;
 }
+.navigation a:hover,
+.navigation a.active {
+    background-color: #359381;
+    color: #f9f9f9;
+}
+
