@@ -259,10 +259,5 @@ function move(e) {
       break;
   }
 }
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") {
-    window.location.href = "../index.html"; 
-  }
-});
 
 
