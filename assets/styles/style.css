@@ -6,3 +6,17 @@
     box-sizing: border-box;
     font-family: 'Press Start 2P', cursive;
 }
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
