@@ -5,7 +5,8 @@ let generationComplete = false;
 let current;
 let goal;
 let overlay = document.getElementById('overlay');
-
+let score_span = document.getElementById('score-span');
+let total_score = parseInt(localStorage.getItem('score'));
 
 class Maze {
   constructor(size, rows, columns) {
@@ -186,7 +187,7 @@ window.addEventListener('load', () => {
 function generateMaze(e) {
   e.preventDefault();
 
-  newMaze = new Maze(600, 25, 25);
+  newMaze = new Maze(600, 10, 10);
   newMaze.setup();
   newMaze.draw();
 }
@@ -204,7 +205,11 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        if (current.goal) overlay.classList.add('overlay-slide-right');
+        if (current.goal) {
+          overlay.classList.add('overlay-slide-right');
+          total_score += 300;
+          score_span.innerText = `Score ${total_score}`;
+        }
       }
       break;
 
@@ -214,7 +219,11 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        if (current.goal) overlay.classList.add('overlay-slide-right');
+        if (current.goal) {
+          overlay.classList.add('overlay-slide-right');
+          total_score += 300;
+          score_span.innerText = `Score ${total_score}`;
+        }      
       }
       break;
 
@@ -224,7 +233,11 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        if (current.goal) overlay.classList.add('overlay-slide-right');
+        if (current.goal) {
+          overlay.classList.add('overlay-slide-right');
+          total_score += 300;
+          score_span.innerText = `Score ${total_score}`;
+        }      
       }
       break;
 
@@ -234,7 +247,11 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        if (current.goal) overlay.classList.add('overlay-slide-right');
+        if (current.goal) {
+          overlay.classList.add('overlay-slide-right');
+          total_score += 300;
+          score_span.innerText = `Score ${total_score}`;
+        }      
       }
       break;
   }
