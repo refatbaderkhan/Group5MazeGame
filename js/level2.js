@@ -40,8 +40,8 @@ function unhideModal(hide, failure, score) {
 
     // displaying modal, message and score
     overlay.classList.add('overlay-slide-right');
-    total_score = parseInt(localStorage.getItem('score')) + score;
-    score_span.innerText = `score ${total_score}`
+    // total_score = parseInt(localStorage.getItem('score')) + score;
+    score_span.innerText = `score ${score}`
 
     // if timeout or bumped to cactus hide next level button
     if (hide == true) {
@@ -54,9 +54,6 @@ function unhideModal(hide, failure, score) {
             message.innerText = 'Time is up! Game Over'
         }
     }
-
-    // set new score in local storage
-    localStorage.setItem('score', total_score)
 
     // reset and next level button listener
     var modal_btn = document.getElementsByClassName('level1-to-2');
@@ -120,7 +117,9 @@ function create() {
     this.physics.add.overlap(player, traps, endGameTrap, null, this);
 
     this.physics.add.overlap(player, goal, function () {
-        unhideModal(false, -1, 200);
+        local_score = 200 + parseInt(localStorage.getItem('score'))
+        localStorage.setItem('score', local_score)
+        unhideModal(false, -1, local_score);
         game.destroy();
     }, null, this);
 
@@ -155,7 +154,8 @@ function update() {
 
 //timer end game function
 function endGameTime() {
-    unhideModal(true, -1, 0)
+  var score = parseInt(localStorage.getItem('score'))
+    unhideModal(true, -1, score)
     game.destroy();
 }
 
@@ -163,7 +163,8 @@ function endGameTime() {
 function endGameTrap() {
     const scream = this.sound.add('scream', { loop: false });
     scream.play();
-    unhideModal(true, 1, 0)
+  var score = parseInt(localStorage.getItem('score'))
+    unhideModal(true, 1, score)
     resetGame();
 }
 
