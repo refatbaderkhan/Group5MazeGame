@@ -4,6 +4,9 @@ let ctx = maze.getContext("2d");
 let generationComplete = false;
 let current;
 let goal;
+let overlay = document.getElementById('overlay');
+
+
 class Maze {
   constructor(size, rows, columns) {
     this.size = size;
@@ -201,7 +204,7 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        // if (current.goal) complete.style.display = "block";
+        if (current.goal) overlay.classList.add('overlay-slide-right');
       }
       break;
 
@@ -211,7 +214,7 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        // if (current.goal) complete.style.display = "block";
+        if (current.goal) overlay.classList.add('overlay-slide-right');
       }
       break;
 
@@ -221,7 +224,7 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        // if (current.goal) complete.style.display = "block";
+        if (current.goal) overlay.classList.add('overlay-slide-right');
       }
       break;
 
@@ -231,8 +234,10 @@ function move(e) {
         current = next;
         newMaze.draw();
         current.highlight(newMaze.columns);
-        // if (current.goal) complete.style.display = "block";
+        if (current.goal) overlay.classList.add('overlay-slide-right');
       }
       break;
   }
 }
+
+
