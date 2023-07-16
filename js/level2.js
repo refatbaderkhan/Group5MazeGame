@@ -26,7 +26,7 @@ function preload() {
 function unhideModal() {
     var overlay = document.getElementById('overlay');
     overlay.classList.add('overlay-slide-right');
-    var modal_btn = document.getElementById('level2-to-3');
+    var modal_btn = document.getElementsByClassName('level1-to-2');
     modal_btn.addEventListener( function(){
     overlay.classList.remove('overlay-slide-right')
     });

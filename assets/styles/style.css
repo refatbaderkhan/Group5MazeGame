@@ -28,6 +28,7 @@ body {
     transform: translateX(-100vw);
 }
 
+
 .overlay-slide-right {
     transition: all 0.4s ease-in-out;
     transform: translateX(0);
@@ -67,6 +68,14 @@ button {
     min-width: 200px;
     padding: .5rem;
     width: auto;
+}
+
+.level1-to-2 {
+    background-color: #7aaf48;
+}
+
+.hide {
+    display: none;
 }
 
 button:focus,

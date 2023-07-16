@@ -37,6 +37,26 @@ const game = new Phaser.Game(config);
     this.load.audio('music_level1', '/assets/audio/music_level1.mp3');
   }
   
+// function to slide modal to screen
+function unhideModal(hide, failure) {
+  var message = document.getElementById('message')
+  var next_link = document.getElementById('next-level')
+  var overlay = document.getElementById('overlay');
+  overlay.classList.add('overlay-slide-right');
+  if(hide == true){
+    next_link.classList.add('hide')
+    if(failure == 1){
+      message.innerText = 'You bumped into a cactus!'
+    }
+    else{
+      message.innerText = 'Time is up! Game Over'
+    }
+  }
+  var modal_btn = document.getElementsByClassName('level2-to-3');
+  modal_btn.addEventListener( function(){
+  overlay.classList.remove('overlay-slide-right')
+  });
+}
 
 
 //initating variables
@@ -98,7 +118,7 @@ function create() {
   this.physics.add.overlap(player, traps, endGameTrap, null, this);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function() {
-    alert('Congratulations!.');
+    unhideModal(false, -1);
     game.destroy();
     }, null, this);
   //assigining keyboard controls built-in Phaser
@@ -138,7 +158,7 @@ function update() {
 
 //timer end game function
 function endGameTime() {
-  alert('Time is up! Game Over.');
+  unhideModal(true, -1)
   game.destroy();
 }
 
@@ -146,7 +166,7 @@ function endGameTime() {
 function endGameTrap() {
   const scream = this.sound.add('scream', {loop:false});
   scream.play();
-  alert('laaaaaaaaa2');
+  unhideModal(true, 1)
   resetGame();
 }
 
