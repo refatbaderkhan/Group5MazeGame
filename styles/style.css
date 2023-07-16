@@ -18,56 +18,50 @@ body {
     background-color: var(--glass-effect);
     backdrop-filter: blur(10px);
     transform: translateX(-100vw);
-  }
+}
 
-  .overlay-slide-right {
+.overlay-slide-right {
     transition: all 0.4s ease-in-out;
     transform: translateX(0);
-  }
-  
-  .overlay-slide-left {
-    transition: all 0.8s ease-in-out;
-    transform: translateX(-100vw);
-  }
+}
 
-  .container {
+.container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(160, 142, 142, 0.3);;
+    background-color: rgba(160, 142, 142, 0.3);
+    ;
     padding: 40px;
-  }
+}
 
-  p {
+p {
     font-size: 32px;
 
-  }
+}
 
-  button {
-    /* background: url("/assets/images/wall.png"); */
+button {
     background-color: #484ba9;
     padding: 10px 20px 10px 20px;
     border: none;
     font-size: 16px;
     font-family: 'changa';
     cursor: pointer;
-	border-bottom: 6px inset rgba(0,0,0,.5);
-	border-left: 6px inset rgba(0,0,0,.5);
-	border-right: 6px inset rgba(255,255,255,.5);
-	border-top: 6px inset rgba(255,255,255,.5);
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	font-size: 2.2rem;
-	margin: 1rem;
-	min-width: 200px;
-	padding: .5rem;
-	width: auto;
+    border-bottom: 6px inset rgba(0, 0, 0, .5);
+    border-left: 6px inset rgba(0, 0, 0, .5);
+    border-right: 6px inset rgba(255, 255, 255, .5);
+    border-top: 6px inset rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 2.2rem;
+    margin: 1rem;
+    min-width: 200px;
+    padding: .5rem;
+    width: auto;
 }
 
 button:focus,
-	button:hover {
-		background: #BCBCBC;
-	}
-
+button:hover {
+    background: #BCBCBC;
+}

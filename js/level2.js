@@ -22,6 +22,7 @@ function preload() {
     this.load.image('goal', '../assets/images/player_level2.png');
 }
 
+// function to slide modal to screen
 function unhideModal() {
     var overlay = document.getElementById('overlay');
     overlay.classList.add('overlay-slide-right');
