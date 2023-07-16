@@ -37,6 +37,15 @@ const game = new Phaser.Game(config);
     this.load.audio('music_level1', '/assets/audio/music_level1.mp3');
   }
   
+// function to slide modal to screen
+function unhideModal() {
+  var overlay = document.getElementById('overlay');
+  overlay.classList.add('overlay-slide-right');
+  var modal_btn = document.getElementById('level2-to-3');
+  modal_btn.addEventListener( function(){
+  overlay.classList.remove('overlay-slide-right')
+  });
+}
 
 
 //initating variables
@@ -98,7 +107,7 @@ function create() {
   this.physics.add.overlap(player, traps, endGameTrap, null, this);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function() {
-    alert('Congratulations!.');
+    unhideModal();
     game.destroy();
     }, null, this);
   //assigining keyboard controls built-in Phaser
