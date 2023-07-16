@@ -259,5 +259,9 @@ function move(e) {
       break;
   }
 }
-
-
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") {
+    localStorage.setItem('local',0);
+    window.location.href = "../index.html" ; 
+  }
+});
