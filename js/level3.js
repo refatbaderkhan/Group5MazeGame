@@ -183,7 +183,7 @@ window.addEventListener('load', () => {
 function generateMaze(e) {
   e.preventDefault();
 
-  newMaze = new Maze(600, 20, 20);
+  newMaze = new Maze(600, 25, 25);
   newMaze.setup();
   newMaze.draw();
 }
