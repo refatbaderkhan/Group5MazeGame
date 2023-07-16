@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    background-color: rgb(101, 8, 189);
+    overflow-x: hidden ;
+    min-height: 100vh;
+    background-image: url(images/cd878838072f224434dea6cc9ee94729.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    z-index: 100;
+}
+
+
+
+#text{
+    font-size: 5em;
+    color: #181717;
+}
+
+
+.parallax{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    margin-bottom: 275px;
+}
+
+
+
+#gate-left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+#gate-right{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+#grass{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+#logo{
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.second-page{
+    position: relative;
+    background-color: #020912;
+    color: aliceblue;
+}
+
+#start{
+    text-decoration: none;
+    color: #f3f3f9;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    padding-left: 50px;
+}
+
