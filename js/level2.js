@@ -56,8 +56,12 @@ function unhideModal(hide, failure, score) {
     }
 
     // reset and next level button listener
-    var modal_btn = document.getElementsByClassName('level1-to-2');
-    modal_btn.addEventListener(function () {
+    var restart_btn = document.getElementById('restart_btn');
+    var next_btn = document.getElementById('next_btn');
+    restart_btn.addEventListener('click', function () {
+        overlay.classList.remove('overlay-slide-right')
+    });
+    next_btn.addEventListener('click', function () {
         overlay.classList.remove('overlay-slide-right')
     });
 }
