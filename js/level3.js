@@ -6,6 +6,7 @@ let goal;
 let overlay = document.getElementById('overlay');
 let score_span = document.getElementById('score-span');
 let total_score = parseInt(localStorage.getItem('score'));
+let main_btn = document.getElementById('main_btn');
 
 class Maze {
   constructor(size, rows, columns) {
@@ -265,3 +266,7 @@ document.addEventListener("keydown", function(e) {
     window.location.href = "../index.html" ; 
   }
 });
+
+main_btn.addEventListener('click', function(){
+  localStorage.setItem('score', 0);
+})
