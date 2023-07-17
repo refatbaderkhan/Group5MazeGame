@@ -69,8 +69,6 @@ function unhideModal(hide, failure, score) {
   // reset and next level button listeners
   restart_btn.addEventListener('click', function () {
     overlay.classList.remove('overlay-slide-right')
-    location.reload();
-    return false;
   });
   next_btn.addEventListener('click', function () {
     overlay.classList.remove('overlay-slide-right')
@@ -192,7 +190,7 @@ function endGameTrap() {
 
 //esc quit game function
 function endGameQuit() {
-  localStorage.setItem('local', 0)
+  localStorage.setItem('score', 0);
   game.destroy();
   window.location = "index.html"
 }

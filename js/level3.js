@@ -261,7 +261,7 @@ function move(e) {
 }
 document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") {
-    localStorage.setItem('local',0);
+    localStorage.setItem('score',0);
     window.location.href = "../index.html" ; 
   }
 });
