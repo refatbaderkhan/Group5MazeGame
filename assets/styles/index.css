@@ -22,7 +22,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 30px 100px;
+    padding: 30px 100px 0 100px;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -31,6 +31,11 @@ header {
     z-index: 100;
 }
 
+h1{
+    font-size: 43px;
+    padding: 30px;
+    color: rgb(81 70 70);
+}
 
 
 #text{
@@ -43,8 +48,8 @@ header {
     text-decoration: none;
     color: #359381;
     padding: 6px 15px;
-    border-radius: px;
-    margin: 0 10px;
+    border-radius: 3px;
+    margin: 5px 10px;
 }
 
 .navigation a:hover,
@@ -71,7 +76,7 @@ header {
 .navigation a{
     position: relative;
     font-size: 1.1em;
-    color: #020912;
+    color: #5b5f64;
     font-weight: 600;
     text-decoration: none;
     margin-left: 30px;
@@ -106,10 +111,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
-    margin-bottom: 275px;
+    height: 95vh;
 }
-
 
 
 #cactus-left{
@@ -117,16 +120,16 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    transform: scale(0.1); 
+    transform: scale(0.4);
 }
 
 #cactus-right{
     position: absolute;
     top: 0;
-    left: 0;
+    left: 0px;
     width: 100%;
     pointer-events: none;
-    transform: scale(0.1); 
+    transform: scale(0.4); 
 }
 
 #grass{
@@ -138,8 +141,8 @@ header {
 }
 
 #logo{
-    padding-right: 20px;
-    padding-bottom: 20px;
+    padding: 0 20px 0px 20px;
+    color: #5b5f64;
 }
 
 .second-page{
@@ -157,6 +160,14 @@ header {
 }
 
 .empty-section {
-    height: 100vh;
+    height: 70vh;
     width: 100vw;
+}
+
+.second-page img{
+    display: block;
+    position: absolute;
+    bottom: -10%;
+    right:48%;
+    width: 10%;
 }
