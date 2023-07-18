@@ -207,7 +207,7 @@ function move(e) {
         current.highlight(newMaze.columns);
         if (current.goal) {
           overlay.classList.add('overlay-slide-right');
-          total_score = 300 + parseInt(localStorage.getItem('score'));
+          let total_score = 300 + parseInt(localStorage.getItem('score'));
           localStorage.setItem('score', total_score);
           score_span.innerText = `Score ${total_score}`;
         }
@@ -222,7 +222,7 @@ function move(e) {
         current.highlight(newMaze.columns);
         if (current.goal) {
           overlay.classList.add('overlay-slide-right');
-          total_score = 300 + parseInt(localStorage.getItem('score'));
+          let total_score = 300 + parseInt(localStorage.getItem('score'));
           localStorage.setItem('score', total_score);
           score_span.innerText = `Score ${total_score}`;
         }      
@@ -237,7 +237,7 @@ function move(e) {
         current.highlight(newMaze.columns);
         if (current.goal) {
           overlay.classList.add('overlay-slide-right');
-          total_score = 300 + parseInt(localStorage.getItem('score'));
+          let total_score = 300 + parseInt(localStorage.getItem('score'));
           localStorage.setItem('score', total_score);
           score_span.innerText = `Score ${total_score}`;
         }      
@@ -252,7 +252,7 @@ function move(e) {
         current.highlight(newMaze.columns);
         if (current.goal) {
           overlay.classList.add('overlay-slide-right');
-          total_score = 300 + parseInt(localStorage.getItem('score'));
+          let total_score = 300 + parseInt(localStorage.getItem('score'));
           localStorage.setItem('score', total_score);
           score_span.innerText = `Score ${total_score}`;
         }      

@@ -40,10 +40,10 @@ function preload() {
 // function to slide modal to screen
 function unhideModal(hide, failure, score) {
   // getting elements
-  var message = document.getElementById('message')
-  var score_span = document.getElementById('score-span')
-  var next_link = document.getElementById('next-level')
-  var overlay = document.getElementById('overlay');
+  let message = document.getElementById('message')
+  let score_span = document.getElementById('score-span')
+  let next_link = document.getElementById('next-level')
+  let overlay = document.getElementById('overlay');
 
   // displaying modal, message and score
   overlay.classList.add('overlay-slide-right');
@@ -61,12 +61,9 @@ function unhideModal(hide, failure, score) {
     }
   }
 
-  // set new score in local storage
-  localStorage.setItem('score', score)
-  var restart_btn = document.getElementById('restart_btn');
-  var next_btn = document.getElementById('next_btn');
-
   // reset and next level button listeners
+  let restart_btn = document.getElementById('restart_btn');
+  let next_btn = document.getElementById('next_btn');
   restart_btn.addEventListener('click', function () {
     overlay.classList.remove('overlay-slide-right')
   });
@@ -132,7 +129,9 @@ function create() {
   this.physics.add.overlap(player, traps, endGameTrap, null, this);
   //calling winning function when 'player' overlap 'goal', and finishing the level with game.destroy
   this.physics.add.overlap(player, goal, function () {
-    local_score = 100 + parseInt(localStorage.getItem('score'))
+    let parsed_int = parseInt(localStorage.getItem('score'));
+    if(isNaN(parsed_int)) parsed_int = 0;
+    let local_score = 100 + parsed_int;
     localStorage.setItem('score', local_score)
     unhideModal(false, -1, local_score);
     game.destroy();
@@ -174,7 +173,7 @@ function update() {
 
 //timer end game function
 function endGameTime() {
-  var score = parseInt(localStorage.getItem('score'))
+  let score = parseInt(localStorage.getItem('score'))
   unhideModal(true, -1, score)
   game.destroy();
 }
@@ -183,7 +182,7 @@ function endGameTime() {
 function endGameTrap() {
   const scream = this.sound.add('scream', { loop: false });
   scream.play();
-  var score = parseInt(localStorage.getItem('score'))
+  let score = parseInt(localStorage.getItem('score'))
   unhideModal(true, 1, score)
   resetGame();
 }
@@ -198,7 +197,7 @@ function endGameQuit() {
 //setting createMaze function
 function createMaze() {
   //setting wallsData array, with walls coordinates on X and Y axis
-  var wallsData = [
+  let wallsData = [
     // top
     { x: 160, y: 40 },
     { x: 220, y: 40 },
@@ -314,7 +313,7 @@ function createMaze() {
     walls.create(wall.x, wall.y, 'wall');
   });
   //setting trapsData array, with traps coordinates on X and Y axis
-  var trapsData = [
+  let trapsData = [
     { x: 400, y: 520 },
     { x: 1000, y: 520 },
     { x: 160, y: 160 },

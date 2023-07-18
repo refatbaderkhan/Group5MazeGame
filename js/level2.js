@@ -33,10 +33,10 @@ function preload() {
 // function to slide modal to screen
 function unhideModal(hide, failure, score) {
     // getting elements
-    var message = document.getElementById('message')
-    var score_span = document.getElementById('score-span')
-    var next_link = document.getElementById('next-level')
-    var overlay = document.getElementById('overlay');
+    let message = document.getElementById('message')
+    let score_span = document.getElementById('score-span')
+    let next_link = document.getElementById('next-level')
+    let overlay = document.getElementById('overlay');
 
     // displaying modal, message and score
     overlay.classList.add('overlay-slide-right');
@@ -56,8 +56,8 @@ function unhideModal(hide, failure, score) {
     }
 
     // reset and next level button listener
-    var restart_btn = document.getElementById('restart_btn');
-    var next_btn = document.getElementById('next_btn');
+    let restart_btn = document.getElementById('restart_btn');
+    let next_btn = document.getElementById('next_btn');
     restart_btn.addEventListener('click', function () {
         overlay.classList.remove('overlay-slide-right')
     });
@@ -121,7 +121,7 @@ function create() {
     this.physics.add.overlap(player, traps, endGameTrap, null, this);
 
     this.physics.add.overlap(player, goal, function () {
-        local_score = 200 + parseInt(localStorage.getItem('score'))
+        let local_score = 200 + parseInt(localStorage.getItem('score'))
         localStorage.setItem('score', local_score)
         unhideModal(false, -1, local_score);
         game.destroy();
@@ -158,7 +158,7 @@ function update() {
 
 //timer end game function
 function endGameTime() {
-    var score = parseInt(localStorage.getItem('score'))
+    let score = parseInt(localStorage.getItem('score'))
     unhideModal(true, -1, score)
     game.destroy();
 }
@@ -167,7 +167,7 @@ function endGameTime() {
 function endGameTrap() {
     const scream = this.sound.add('scream', { loop: false });
     scream.play();
-    var score = parseInt(localStorage.getItem('score'))
+    let score = parseInt(localStorage.getItem('score'))
     unhideModal(true, 1, score)
     resetGame();
 }
@@ -180,18 +180,18 @@ function endGameQuit() {
 }
 
 function createMaze() {
-    var wallsData = [];
+    let wallsData = [];
 
     // function that adds blocks together vertically by fixing x-value and changing y value
     function build_vertically(x, y, blocks_num) {
-        for (var i = 0; i < blocks_num; i++) {
+        for (let i = 0; i < blocks_num; i++) {
             wallsData.push({ x: x, y: y + 30 * i });
         }
     }
 
     // function that adds blocks together vertically by fixing y-value and changing x value
     function build_horizontally(x, y, blocks_num) {
-        for (var i = 0; i < blocks_num; i++) {
+        for (let i = 0; i < blocks_num; i++) {
             wallsData.push({ x: x + 30 * i, y: y });
         }
     }
@@ -247,7 +247,7 @@ function createMaze() {
     });
 
 
-    var trapsData = [
+    let trapsData = [
         { x: 830, y: 260 },
         { x: 920, y: 350 },
         { x: 830, y: 440 },
